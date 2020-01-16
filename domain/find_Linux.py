@@ -61,12 +61,16 @@ for i in range(0,link_number):
         domain.append("ERROR")
         error_count += 1
         continue
-        
+
     #switch to the first webpage in the browser
     browser.switch_to_window(browser.window_handles[0])
-    browser.get(link[i] + "/about/")
+    try:
+        browser.set_page_load_timeout(10)
+        browser.get(link[i] + "/about/")
 
-    time.sleep(2)
+        time.sleep(2)
+    except:
+        print(link[i] + "/about/")
 
     #https://stackoverflow.com/questions/43021434/click-button-by-find-element-by-class-name-not-working-python-selenium-webdriver
     try:
@@ -77,31 +81,24 @@ for i in range(0,link_number):
 
         time.sleep(2)
         pin = time.time()
-        # check for time out
-        if(time.time()-pin >= 30):
-            print("ERROR: time out")
-            domain.append("ERROR")
-            error_count += 1
-            browser.close()
-            continue
-        else:
-            #get current URl from the browser
-            company_url = browser.current_url
-            #get the domain name from the URL
-            company_domain = "{0.scheme}://{0.netloc}/".format(
+        #get current URl from the browser
+        company_url = browser.current_url
+        #get the domain name from the URL
+        company_domain = "{0.scheme}://{0.netloc}/".format(
             urlsplit(company_url))
-            print(company_domain)
-            #add the domain to the DOMAIN LIST
-            domain.append(company_domain)
-            seconds_after = time.time()
-            session = seconds_after - record
-            # take a record of current time
-            record = seconds_after
-            total_time = "{:.2f}".format(seconds_after - seconds_before)
-            session_time = "{:.2f}".format(session)
-            print(i, ", ", "Total time use =", total_time, ", Session time use =", session_time)
-            print("=================================")
-            browser.close()
+        print(company_domain)
+        #add the domain to the DOMAIN LIST
+        domain.append(company_domain)
+        seconds_after = time.time()
+        session = seconds_after - record
+        # take a record of current time
+        record = seconds_after
+        total_time = "{:.2f}".format(seconds_after - seconds_before)
+        session_time = "{:.2f}".format(session)
+        print(i, ", ", "Total time use =", total_time,
+              ", Session time use =", session_time)
+        print("=================================")
+        browser.close()
     except:
         print("ERROR!")
         domain.append("ERROR")

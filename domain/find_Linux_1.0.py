@@ -24,6 +24,7 @@ options.add_argument('window-size=1200x600')
 
 # initialize the driver
 browser = webdriver.Chrome(chrome_options=options)
+browser.set_page_load_timeout(9)
 
 seconds_before = time.time()
 browser.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
