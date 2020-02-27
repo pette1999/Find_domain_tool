@@ -2,7 +2,7 @@ import gspread
 import authentication
 
 def getList():
-    json_file_name = 'finddomain-265318-8ac51b66da62.json'
+    json_file_name = 'hip-host-262902-bbbb44360c3f.json'
     credential = authentication.authenticate(json_file_name)
     gc = gspread.authorize(credential)
     wks = gc.open("domainTest").sheet1
@@ -12,12 +12,12 @@ def getList():
 
 
 def writeList(value_list):
-    json_file_name = 'finddomain-265318-8ac51b66da62.json'
+    json_file_name = 'hip-host-262902-bbbb44360c3f.json'
     credential = authentication.authenticate(json_file_name)
     gc = gspread.authorize(credential)
     wks = gc.open("domainTest").sheet1
 
-    cell_list = wks.range('F1:F10')
+    cell_list = wks.range('F1:F50')
 
     index = 0
     for cell in cell_list:

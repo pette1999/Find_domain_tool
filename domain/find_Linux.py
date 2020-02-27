@@ -64,8 +64,8 @@ for i in range(0,link_number):
 
     #switch to the first webpage in the browser
     browser.switch_to_window(browser.window_handles[0])
+    browser.set_page_load_timeout(10)
     try:
-        browser.set_page_load_timeout(10)
         browser.get(link[i] + "/about/")
 
         time.sleep(2)
@@ -103,13 +103,7 @@ for i in range(0,link_number):
         print("ERROR!")
         domain.append("ERROR")
         error_count += 1
-        # browser.close()
-        # if(error_count<=5):
-        #     print("ERROR!")
-        #     error_count += 1
-        #     domain.append("ERROR!")
-        # else:
-        #     pass
+        
 # l.close()
 
 print("domain list length: ", len(domain))
