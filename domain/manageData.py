@@ -17,7 +17,7 @@ def writeList(value_list):
     gc = gspread.authorize(credential)
     wks = gc.open("domainTest").sheet1
 
-    cell_list = wks.range('F1:F50')
+    cell_list = wks.range('F1:F120')
 
     index = 0
     for cell in cell_list:

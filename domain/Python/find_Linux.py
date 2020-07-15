@@ -29,17 +29,15 @@ browser = webdriver.Chrome(chrome_options=options)
 seconds_before = time.time()
 record = seconds_before
 
-def login():
-    browser.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
-    print("Connecting to Linkedin.com...")
-    python_button = browser.find_elements_by_xpath("//*[@id='username']")[0]
-    python_button.send_keys("1932807205@qq.com")
-    python_button = browser.find_elements_by_xpath("//*[@id='password']")[0]
-    python_button.send_keys("Meiguo1969")
-    python_button = browser.find_elements_by_xpath("//*[@id='app__container']/main/div/form/div[3]/button")[0]
-    python_button.submit()
-    print("Logging in...")
-login()
+browser.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
+print("Connecting to Linkedin.com...")
+python_button = browser.find_elements_by_xpath("//*[@id='username']")[0]
+python_button.send_keys("1932807205@qq.com")
+python_button = browser.find_elements_by_xpath("//*[@id='password']")[0]
+python_button.send_keys("Meiguo1969")
+python_button = browser.find_elements_by_xpath("//*[@id='app__container']/main/div/form/div[3]/button")[0]
+python_button.submit()
+print("Logging in...")
 
 time.sleep(3)
 
@@ -64,7 +62,7 @@ for i in range(0,link_number):
 
     #switch to the first webpage in the browser
     browser.switch_to_window(browser.window_handles[0])
-    browser.set_page_load_timeout(10)
+    browser.set_page_load_timeout(60)
     try:
         browser.get(link[i] + "/about/")
 

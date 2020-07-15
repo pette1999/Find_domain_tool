@@ -8,7 +8,14 @@ domain = []
 error_count = 0
 
 #open Chrome and sign in to linkedin
-browser = webdriver.Chrome()
+# browser = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+options.add_argument('window-size=1200x600')
+browser = webdriver.Chrome(chrome_options=options)
+
+
+
 seconds_before = time.time()
 browser.get("https://www.linkedin.com/login?trk=guest_homepage-basic_nav-header-signin")
 
